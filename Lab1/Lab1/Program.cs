@@ -2,11 +2,11 @@
 
 namespace Lab1
 {
-    class Program
+    public static class Lab1
     {
-        static void Main(string[] args)
+        public static int Add(int a, int b)
         {
-            Console.WriteLine("Hello World!");
+            return a + b;
         }
     }
 }
