@@ -4,7 +4,7 @@
     {
         private ENumberType mNumberType;
         private string mNumberPart;
-        private bool bIsNegative = false;
+        private bool mbIsNegative = false;
 
         public NumberTypeChecker(string num)
         {
@@ -13,7 +13,7 @@
 
         public ENumberType NumberType { get => mNumberType; set => mNumberType = value; }
         public string NumberPart { get => mNumberPart; set => mNumberPart = value; }
-        public bool bIsNegativeSign { get => bIsNegative; set => bIsNegative = value; }
+        public bool bIsNegativeSign { get => mbIsNegative; set => mbIsNegative = value; }
 
         public void SetNumberTypeAndNumberPart(string num)
         {
@@ -57,7 +57,7 @@
                 if (num.Length >= 2 && num[1] != '0')
                 {
                     this.NumberType = ENumberType.Decimal;
-                    this.bIsNegative = true;
+                    this.mbIsNegative = true;
                     this.NumberPart = num.Substring(1);
                 }
                 else
