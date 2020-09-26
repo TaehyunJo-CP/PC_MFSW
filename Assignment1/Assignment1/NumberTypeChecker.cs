@@ -13,7 +13,7 @@
 
         public ENumberType NumberType { get => mNumberType; set => mNumberType = value; }
         public string NumberPart { get => mNumberPart; set => mNumberPart = value; }
-        public bool bIsNegativeSign { get => mbIsNegative; set => mbIsNegative = value; }
+        public bool IsNegativeSign { get => mbIsNegative; set => mbIsNegative = value; }
 
         public void SetNumberTypeAndNumberPart(string num)
         {

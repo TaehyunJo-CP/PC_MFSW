@@ -364,6 +364,8 @@ namespace Assignment1
             Debug.Assert(calc3.SubtractOrNull("-889874837998729348827376462", "577257635827634627837676734", out bOverflow) == "-1467132473826363976665053196");
             Debug.Assert(!bOverflow);
 
+            Debug.Assert(calc1.SubtractOrNull("1", "ff", out bOverflow) == null);
+
             System.Console.WriteLine("Done");
         }
     }

@@ -7,12 +7,12 @@ namespace Assignment1
     public class BigNumberCalculator
     {
         private readonly int mBitCount;
-        private readonly EMode Mode;
+        private readonly EMode mMode;
 
-        public BigNumberCalculator(int bitCount, EMode mMode)
+        public BigNumberCalculator(int bitCount, EMode mode)
         {
             this.mBitCount = bitCount;
-            this.Mode = mMode;
+            this.mMode = mode;
         }
 
 
@@ -172,7 +172,7 @@ namespace Assignment1
 
                 }
 
-                if (numberTypeChecker.bIsNegativeSign)
+                if (numberTypeChecker.IsNegativeSign)
                 {
                     return ToMinimumDigits.MakeBinaryOrNull(BigNumberCalculator.GetTwosComplementOrNull(resultSb.ToString()));
                 }
@@ -365,6 +365,16 @@ namespace Assignment1
 
         public string AddOrNull(string num1, string num2, out bool bOverflow)
         {
+            NumberTypeChecker numberTypeChecker1 = new NumberTypeChecker(num1);
+            NumberTypeChecker numberTypeChecker2 = new NumberTypeChecker(num2);
+
+            if (numberTypeChecker1.NumberType == ENumberType.None || numberTypeChecker2.NumberType == ENumberType.None)
+            {
+                bOverflow = false;
+                return null;
+            }
+
+
             string binaryNum1 = BigNumberCalculator.ToBinaryOrNull(num1).Substring(2);
             string binaryNum2 = BigNumberCalculator.ToBinaryOrNull(num2).Substring(2);
 
@@ -408,11 +418,11 @@ namespace Assignment1
             }
 
 
-            if (this.Mode == EMode.Binary)
+            if (this.mMode == EMode.Binary)
             {
                 return binary;
             }
-            else if (this.Mode == EMode.Decimal)
+            else if (this.mMode == EMode.Decimal)
             {
                 return BigNumberCalculator.ToDecimalOrNull(binary);
             }
@@ -426,6 +436,15 @@ namespace Assignment1
 
         public string SubtractOrNull(string num1, string num2, out bool bOverflow)
         {
+            NumberTypeChecker numberTypeChecker1 = new NumberTypeChecker(num1);
+            NumberTypeChecker numberTypeChecker2 = new NumberTypeChecker(num2);
+
+            if (numberTypeChecker1.NumberType == ENumberType.None || numberTypeChecker2.NumberType == ENumberType.None)
+            {
+                bOverflow = false;
+                return null;
+            }
+
             string binary1 = BigNumberCalculator.ToBinaryOrNull(num1);
             string binary2 = BigNumberCalculator.ToBinaryOrNull(num2);
 
