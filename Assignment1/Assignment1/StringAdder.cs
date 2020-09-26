@@ -29,7 +29,7 @@ namespace Assignment1
             int forNextDigitAdded = 0;
 
             int tenDigit;
-            int OneDigit;
+            int oneDigit;
 
             for (int i = 0; i < biggerLength; i++)
             {
@@ -57,11 +57,11 @@ namespace Assignment1
                 added = aNum + bNum + forNextDigitAdded;
 
                 tenDigit = added / digit;
-                OneDigit = added % digit;
+                oneDigit = added % digit;
 
                 forNextDigitAdded = tenDigit;
 
-                sb.Append(OneDigit);
+                sb.Append(oneDigit);
 
             }
 

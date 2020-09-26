@@ -16,17 +16,17 @@ namespace Assignment1
                 char firstChar = binaryNum[2];
                 sb.Append(firstChar);
 
-                bool isContinue = true;
+                bool bIsContinue = true;
 
                 foreach (char c in binaryNum.Substring(3))
                 {
-                    if (c == firstChar && isContinue)
+                    if (c == firstChar && bIsContinue)
                     {
                         continue;
                     }
-                    else if (c != firstChar && isContinue)
+                    else if (c != firstChar && bIsContinue)
                     {
-                        isContinue = false;
+                        bIsContinue = false;
                     }
 
                     sb.Append(c);

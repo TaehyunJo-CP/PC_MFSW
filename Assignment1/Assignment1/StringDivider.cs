@@ -6,39 +6,39 @@ namespace Assignment1
 {
     public class StringDivider
     {
-        private readonly string num;
-        private readonly int divider;
+        private readonly string mNum;
+        private readonly int mDivider;
 
-        private int tempQuotient;
-        private int tempRemainder = 0;
+        private int mTempQuotient;
+        private int mTempRemainder = 0;
 
         public string Q { get; }
         public string R { get; }
 
         public StringDivider(string num, int divider)
         {
-            this.num = num;
-            this.divider = divider;
+            this.mNum = num;
+            this.mDivider = divider;
 
             StringBuilder sbResult = new StringBuilder();
             StringBuilder sbRemain = new StringBuilder();
 
-            foreach (char c in this.num)
+            foreach (char c in this.mNum)
             {
                 sbRemain.Append(c);
-                this.DivideWithIntegers(Int32.Parse(sbRemain.ToString()), this.divider);
+                this.DivideWithIntegers(Int32.Parse(sbRemain.ToString()), this.mDivider);
 
-                if (this.tempQuotient > 0)
+                if (this.mTempQuotient > 0)
                 {
                     sbRemain = new StringBuilder();
-                    sbRemain.Append(this.tempRemainder);
+                    sbRemain.Append(this.mTempRemainder);
                 }
                 //else
                 //{
                 //    sbRemain.Append(this.remainder);
                 //}
 
-                sbResult.Append(this.tempQuotient);
+                sbResult.Append(this.mTempQuotient);
 
             }
 
@@ -47,7 +47,7 @@ namespace Assignment1
             {
                 Q = "0";
             }
-            R = tempRemainder.ToString();
+            R = mTempRemainder.ToString();
 
         }
 
@@ -55,8 +55,8 @@ namespace Assignment1
 
         public void DivideWithIntegers(int num, int divider)
         {
-            this.tempQuotient = num / divider;
-            this.tempRemainder = num % divider;
+            this.mTempQuotient = num / divider;
+            this.mTempRemainder = num % divider;
         }
 
 

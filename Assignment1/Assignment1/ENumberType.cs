@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Assignment1
 {
-    public enum NumberType
+    public enum ENumberType
     {
         Binary,
         Hex,

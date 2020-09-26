@@ -11,20 +11,20 @@ namespace Assignment1
     {
         public class BigNumberCalculator
         {
-            private readonly int bitCount;
-            private readonly EMode mode;
+            private readonly int mBitCount;
+            private readonly EMode Mode;
 
             public BigNumberCalculator(int bitCount, EMode mode)
             {
-                this.bitCount = bitCount;
-                this.mode = mode;
+                this.mBitCount = bitCount;
+                this.Mode = mode;
             }
 
 
             public static string GetOnesComplementOrNull(string num)
             {
                 NumberTypeChecker numberTypeChecker = new NumberTypeChecker(num);
-                if (numberTypeChecker.NumberType == NumberType.Binary)
+                if (numberTypeChecker.NumberType == ENumberType.Binary)
                 {
                     StringBuilder stringBuilder = new StringBuilder("0b");
                     foreach (char c in numberTypeChecker.NumberPart)
@@ -51,7 +51,7 @@ namespace Assignment1
             public static string GetTwosComplementOrNull(string num)
             {
                 NumberTypeChecker numberTypeChecker = new NumberTypeChecker(num);
-                if (numberTypeChecker.NumberType == NumberType.Binary)
+                if (numberTypeChecker.NumberType == ENumberType.Binary)
                 {
                     StringBuilder stringBuilder = new StringBuilder("0b");
                     foreach (char c in numberTypeChecker.NumberPart)
@@ -120,11 +120,11 @@ namespace Assignment1
             public static string ToBinaryOrNull(string num)
             {
                 NumberTypeChecker numberTypeChecker = new NumberTypeChecker(num);
-                if (numberTypeChecker.NumberType == NumberType.Binary)
+                if (numberTypeChecker.NumberType == ENumberType.Binary)
                 {
                     return num;
                 }
-                else if (numberTypeChecker.NumberType == NumberType.Hex)
+                else if (numberTypeChecker.NumberType == ENumberType.Hex)
                 {
                     StringBuilder stringBuilder = new StringBuilder("0b");
 
@@ -137,7 +137,7 @@ namespace Assignment1
 
                     return stringBuilder.ToString();
                 }
-                else if (numberTypeChecker.NumberType == NumberType.Decimal)
+                else if (numberTypeChecker.NumberType == ENumberType.Decimal)
                 {
                     StringBuilder sb = new StringBuilder();
 
@@ -187,7 +187,7 @@ namespace Assignment1
                     }
 
                 }
-                else if (numberTypeChecker.NumberType == NumberType.None)
+                else if (numberTypeChecker.NumberType == ENumberType.None)
                 {
                     return null;
                 }
@@ -217,7 +217,7 @@ namespace Assignment1
             public static string ToHexOrNull(string num)
             {
                 NumberTypeChecker numberTypeChecker = new NumberTypeChecker(num);
-                if (numberTypeChecker.NumberType == NumberType.Binary)
+                if (numberTypeChecker.NumberType == ENumberType.Binary)
                 {
                     string numberPart = numberTypeChecker.NumberPart;
 
@@ -256,16 +256,16 @@ namespace Assignment1
                     return result.ToString();
 
                 }
-                else if (numberTypeChecker.NumberType == NumberType.Hex)
+                else if (numberTypeChecker.NumberType == ENumberType.Hex)
                 {
                     return num;
                 }
-                else if (numberTypeChecker.NumberType == NumberType.Decimal)
+                else if (numberTypeChecker.NumberType == ENumberType.Decimal)
                 {
                     string binary = BigNumberCalculator.ToBinaryOrNull(num);
                     return BigNumberCalculator.ToHexOrNull(binary);
                 }
-                else if (numberTypeChecker.NumberType == NumberType.None)
+                else if (numberTypeChecker.NumberType == ENumberType.None)
                 {
                     return null;
                 }
@@ -275,7 +275,7 @@ namespace Assignment1
             public static string ToDecimalOrNull(string num)
             {
                 NumberTypeChecker numberTypeChecker = new NumberTypeChecker(num);
-                if (numberTypeChecker.NumberType == NumberType.Binary)
+                if (numberTypeChecker.NumberType == ENumberType.Binary)
                 {
                     string numberPart = numberTypeChecker.NumberPart;
                     StringAdder sa;
@@ -327,16 +327,16 @@ namespace Assignment1
                     return resultSb.Append(result).ToString();
 
                 }
-                else if (numberTypeChecker.NumberType == NumberType.Hex)
+                else if (numberTypeChecker.NumberType == ENumberType.Hex)
                 {
                     string binary = BigNumberCalculator.ToBinaryOrNull(num);
                     return BigNumberCalculator.ToDecimalOrNull(binary);
                 }
-                else if (numberTypeChecker.NumberType == NumberType.Decimal)
+                else if (numberTypeChecker.NumberType == ENumberType.Decimal)
                 {
                     return num;
                 }
-                else if (numberTypeChecker.NumberType == NumberType.None)
+                else if (numberTypeChecker.NumberType == ENumberType.None)
                 {
                     return null;
                 }
@@ -346,7 +346,7 @@ namespace Assignment1
             private string MakeFullBitBinaryOrNull(string num)
             {
                 StringBuilder fullBinary = new StringBuilder();
-                int surplusCount = this.bitCount - (num.Length);
+                int surplusCount = this.mBitCount - (num.Length);
 
                 if (surplusCount > 0)
                 {
@@ -386,9 +386,9 @@ namespace Assignment1
                 StringAdder sa = new StringAdder(binaryNum1, binaryNum2, 2);
                 string addedResult = sa.NotTrimedResult;
 
-                for (int i = 0; i < this.bitCount; i++)
+                for (int i = 0; i < this.mBitCount; i++)
                 {
-                    int idx = i + addedResult.Length - this.bitCount;
+                    int idx = i + addedResult.Length - this.mBitCount;
                     if (idx < 0)
                     {
                         continue;
@@ -413,11 +413,11 @@ namespace Assignment1
                 }
 
 
-                if (this.mode == EMode.Binary)
+                if (this.Mode == EMode.Binary)
                 {
                     return binary;
                 }
-                else if (this.mode == EMode.Decimal)
+                else if (this.Mode == EMode.Decimal)
                 {
                     return BigNumberCalculator.ToDecimalOrNull(binary);
                 }
