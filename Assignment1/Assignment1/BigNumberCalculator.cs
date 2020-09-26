@@ -95,7 +95,7 @@ namespace Assignment1
                 }
             }
 
-            private static readonly Dictionary<char, string> hexCharacterToBinary = new Dictionary<char, string> {
+            private static readonly Dictionary<char, string> HEX_CHRACTER_TO_BINARY = new Dictionary<char, string> {
                 { '0', "0000" },
                 { '1', "0001" },
                 { '2', "0010" },
@@ -129,7 +129,7 @@ namespace Assignment1
                     int numberPartLength = numberPart.Length;
                     foreach (char c in numberPart)
                     {
-                        stringBuilder.Append(hexCharacterToBinary[char.ToLower(c)]);
+                        stringBuilder.Append(HEX_CHRACTER_TO_BINARY[char.ToLower(c)]);
                     }
 
                     return stringBuilder.ToString();
@@ -139,16 +139,16 @@ namespace Assignment1
                     StringBuilder sb = new StringBuilder();
 
                     string numberPart = numberTypeChecker.NumberPart;
-                    bool isDone = false;
+                    bool bIsDone = false;
 
                     string targetNum = numberPart;
-                    while (!isDone)
+                    while (!bIsDone)
                     {
                         StringDivider sd = new StringDivider(targetNum, 2);
                         if (sd.Q == "0")
                         {
                             sb.Append(sd.R);
-                            isDone = true;
+                            bIsDone = true;
                         }
                         else
                         {
@@ -174,7 +174,7 @@ namespace Assignment1
 
                     }
 
-                    if (numberTypeChecker.HasNegativeSign)
+                    if (numberTypeChecker.bIsNegativeSign)
                     {
                         return ToMinimumDigits.MakeBinaryOrNull(BigNumberCalculator.GetTwosComplementOrNull(resultSb.ToString()));
                     }
@@ -191,7 +191,7 @@ namespace Assignment1
                 return null;
             }
 
-            private static readonly Dictionary<string, char> binaryToHexCharacter = new Dictionary<string, char> {
+            private static readonly Dictionary<string, char> BINARY_TO_HEX = new Dictionary<string, char> {
                 {"0000", '0'},
                 {"0001", '1'},
                 {"0010", '2'},
@@ -247,7 +247,7 @@ namespace Assignment1
                     for (int i = 0; i < blocksCount; i++)
                     {
                         string key = fb.Substring(i * 4, 4);
-                        result.Append(Char.ToUpper(binaryToHexCharacter[key]).ToString());
+                        result.Append(Char.ToUpper(BINARY_TO_HEX[key]).ToString());
                     }
 
                     return result.ToString();
@@ -340,7 +340,7 @@ namespace Assignment1
                 return null;
             }
 
-            private string MakeFullBitBinaryOrNull(string num)
+            private string makeFullBitBinaryOrNull(string num)
             {
                 StringBuilder fullBinary = new StringBuilder();
                 int surplusCount = this.mBitCount - (num.Length);
@@ -370,8 +370,8 @@ namespace Assignment1
                 string binaryNum1 = BigNumberCalculator.ToBinaryOrNull(num1).Substring(2);
                 string binaryNum2 = BigNumberCalculator.ToBinaryOrNull(num2).Substring(2);
 
-                binaryNum1 = this.MakeFullBitBinaryOrNull(binaryNum1);
-                binaryNum2 = this.MakeFullBitBinaryOrNull(binaryNum2);
+                binaryNum1 = this.makeFullBitBinaryOrNull(binaryNum1);
+                binaryNum2 = this.makeFullBitBinaryOrNull(binaryNum2);
 
                 if (binaryNum1 == null || binaryNum2 == null)
                 {
@@ -431,8 +431,8 @@ namespace Assignment1
                 string binary1 = BigNumberCalculator.ToBinaryOrNull(num1);
                 string binary2 = BigNumberCalculator.ToBinaryOrNull(num2);
 
-                string binaryNum1 = this.MakeFullBitBinaryOrNull(binary1.Substring(2));
-                string binaryNum2 = this.MakeFullBitBinaryOrNull(binary2.Substring(2));
+                string binaryNum1 = this.makeFullBitBinaryOrNull(binary1.Substring(2));
+                string binaryNum2 = this.makeFullBitBinaryOrNull(binary2.Substring(2));
 
                 StringBuilder sb = new StringBuilder("0b");
                 sb.Append(binaryNum2);
