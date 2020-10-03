@@ -58,15 +58,15 @@ namespace Lab4
         {
             MultiSet newMultiSet = new MultiSet();
 
-            //HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
-            //foreach (string s in hashSet)
-            //{
-            //    uint max = Math.Min(this.GetMultiplicity(s), other.GetMultiplicity(s));
-            //    for (uint i = 0; i < max; i++)
-            //    {
-            //        newMultiSet.Add(s);
-            //    }
-            //}
+            HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
+            foreach (string s in hashSet)
+            {
+                int minCount = (int)Math.Min(this.GetMultiplicity(s), other.GetMultiplicity(s));
+                for (int i = 0; i < minCount; i++)
+                {
+                    newMultiSet.Add(s);
+                }
+            }
 
             return newMultiSet;
         }
@@ -75,15 +75,15 @@ namespace Lab4
         {
             MultiSet newMultiSet = new MultiSet();
 
-            //HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
-            //foreach (string s in hashSet)
-            //{
-            //    uint max = Math.Max(this.GetMultiplicity(s) - other.GetMultiplicity(s), 0);
-            //    for (uint i = 0; i < max; i++)
-            //    {
-            //        newMultiSet.Add(s);
-            //    }
-            //}
+            HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
+            foreach (string s in hashSet)
+            {
+                int maxCount = (int)Math.Max(this.GetMultiplicity(s) - other.GetMultiplicity(s), 0);
+                for (int i = 0; i < maxCount; i++)
+                {
+                    newMultiSet.Add(s);
+                }
+            }
 
             return newMultiSet;
         }

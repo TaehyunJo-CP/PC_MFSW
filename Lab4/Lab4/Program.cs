@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Lab4
@@ -8,6 +9,8 @@ namespace Lab4
         static void Main(string[] args)
         {
             {
+                Console.WriteLine((uint)0 - (uint)1);
+
                 MultiSet set = new MultiSet();
 
                 set.Add("cattle");
