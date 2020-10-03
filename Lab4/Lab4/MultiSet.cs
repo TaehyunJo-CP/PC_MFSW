@@ -100,7 +100,7 @@ namespace Lab4
                 string ele = remainElements[0];
                 uint multiplicity = this.GetMultiplicity(ele);
 
-                for (int i = 0; i < multiplicity + 1; i++)
+                for (uint i = 0; i < multiplicity + 1; i++)
                 {
                     MultiSet multiSet = new MultiSet();
                     foreach (string s in toCopy.ToList())
@@ -144,9 +144,9 @@ namespace Lab4
         public List<MultiSet> FindPowerSet()
         {
             List<MultiSet> powerSet = new List<MultiSet>();
-            //HashSet<string> remainElements = new HashSet<string>(this.ToList());
-            //this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
-            //powerSet.Sort(this.compare);
+            HashSet<string> remainElements = new HashSet<string>(this.ToList());
+            this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
+            powerSet.Sort(this.compare);
             return powerSet;
         }
 
