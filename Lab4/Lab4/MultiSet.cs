@@ -88,7 +88,7 @@ namespace Lab4
             return newMultiSet;
         }
 
-        private void FindPowerSetRecursive(List<MultiSet> target, MultiSet toCopy, List<string> remainElements)
+        private void findPowerSetRecursive(List<MultiSet> target, MultiSet toCopy, List<string> remainElements)
         {
 
             if (remainElements.Count == 0)
@@ -112,12 +112,12 @@ namespace Lab4
                     {
                         multiSet.Add(ele);
                     }
-                    this.FindPowerSetRecursive(target, multiSet, remainElements.Skip(1).ToList());
+                    this.findPowerSetRecursive(target, multiSet, remainElements.Skip(1).ToList());
                 }
             }
         }
 
-        public int compare(MultiSet a, MultiSet b)
+        private int compare(MultiSet a, MultiSet b)
         {
             List<string> aElements = a.mElements;
             List<string> bElements = b.mElements;
@@ -142,7 +142,7 @@ namespace Lab4
         {
             List<MultiSet> multiSet = new List<MultiSet>();
             HashSet<string> remainElements = new HashSet<string>(this.ToList());
-            this.FindPowerSetRecursive(multiSet, new MultiSet(), remainElements.ToList());
+            this.findPowerSetRecursive(multiSet, new MultiSet(), remainElements.ToList());
 
             multiSet.Sort(this.compare);
 
