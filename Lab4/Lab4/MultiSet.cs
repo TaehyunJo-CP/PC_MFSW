@@ -130,7 +130,10 @@ namespace Lab4
                 {
                     continue;
                 }
-                return String.Compare(aElements[i], bElements[i]);
+                else
+                {
+                    return String.Compare(aElements[i], bElements[i]);
+                }
             }
 
             return aElements.Count - bElements.Count;
@@ -140,13 +143,11 @@ namespace Lab4
 
         public List<MultiSet> FindPowerSet()
         {
-            List<MultiSet> multiSet = new List<MultiSet>();
+            List<MultiSet> powerSet = new List<MultiSet>();
             HashSet<string> remainElements = new HashSet<string>(this.ToList());
-            this.findPowerSetRecursive(multiSet, new MultiSet(), remainElements.ToList());
-
-            multiSet.Sort(this.compare);
-
-            return multiSet;
+            this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
+            powerSet.Sort(this.compare);
+            return powerSet;
         }
 
         public bool IsSubsetOf(MultiSet other)

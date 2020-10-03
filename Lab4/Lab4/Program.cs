@@ -146,6 +146,19 @@ namespace Lab4
 
             }
 
+            {
+                MultiSet set = new MultiSet();
+
+                set.Add("a");
+                set.Add("a");
+                set.Add("b");
+                set.Add("c");
+
+                List<MultiSet> powerSet = set.FindPowerSet();
+                Debug.Assert(powerSet.Count == 12);
+            }
+
+
 
             System.Console.WriteLine("Done");
         }
