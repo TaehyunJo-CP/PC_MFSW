@@ -144,9 +144,9 @@ namespace Lab4
         public List<MultiSet> FindPowerSet()
         {
             List<MultiSet> powerSet = new List<MultiSet>();
-            //HashSet<string> remainElements = new HashSet<string>(this.ToList());
-            //this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
-            //powerSet.Sort(this.compare);
+            HashSet<string> remainElements = new HashSet<string>(this.ToList());
+            this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
+            powerSet.Sort(this.compare);
             return powerSet;
         }
 
@@ -155,14 +155,14 @@ namespace Lab4
             HashSet<string> hashSet = new HashSet<string>(this.ToList());
 
             bool bIsSubset = true;
-            //foreach (string s in hashSet)
-            //{
-            //    if (other.GetMultiplicity(s) < this.GetMultiplicity(s))
-            //    {
-            //        bIsSubset = false;
-            //        break;
-            //    }
-            //}
+            foreach (string s in hashSet)
+            {
+                if (other.GetMultiplicity(s) < this.GetMultiplicity(s))
+                {
+                    bIsSubset = false;
+                    break;
+                }
+            }
 
             return bIsSubset;
         }
@@ -172,14 +172,14 @@ namespace Lab4
             HashSet<string> hashSet = new HashSet<string>(this.ToList());
 
             bool bIsSuperSet = true;
-            //foreach (string s in hashSet)
-            //{
-            //    if (other.GetMultiplicity(s) > this.GetMultiplicity(s))
-            //    {
-            //        bIsSuperSet = false;
-            //        break;
-            //    }
-            //}
+            foreach (string s in hashSet)
+            {
+                if (other.GetMultiplicity(s) > this.GetMultiplicity(s))
+                {
+                    bIsSuperSet = false;
+                    break;
+                }
+            }
 
             return bIsSuperSet;
         }

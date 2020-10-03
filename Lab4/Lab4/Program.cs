@@ -9,8 +9,6 @@ namespace Lab4
         static void Main(string[] args)
         {
             {
-                Console.WriteLine((uint)0 - (uint)1);
-
                 MultiSet set = new MultiSet();
 
                 set.Add("cattle");
