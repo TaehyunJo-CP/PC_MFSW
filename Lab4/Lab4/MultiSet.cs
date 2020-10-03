@@ -41,15 +41,15 @@ namespace Lab4
         {
             MultiSet newMultiSet = new MultiSet();
 
-            HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
-            foreach (string s in hashSet)
-            {
-                uint max = Math.Max(this.GetMultiplicity(s), other.GetMultiplicity(s));
-                for (uint i = 0; i < max; i++)
-                {
-                    newMultiSet.Add(s);
-                }
-            }
+            //HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
+            //foreach (string s in hashSet)
+            //{
+            //    uint max = Math.Max(this.GetMultiplicity(s), other.GetMultiplicity(s));
+            //    for (uint i = 0; i < max; i++)
+            //    {
+            //        newMultiSet.Add(s);
+            //    }
+            //}
 
             return newMultiSet;
         }
@@ -58,15 +58,15 @@ namespace Lab4
         {
             MultiSet newMultiSet = new MultiSet();
 
-            HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
-            foreach (string s in hashSet)
-            {
-                uint max = Math.Min(this.GetMultiplicity(s), other.GetMultiplicity(s));
-                for (uint i = 0; i < max; i++)
-                {
-                    newMultiSet.Add(s);
-                }
-            }
+            //HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
+            //foreach (string s in hashSet)
+            //{
+            //    uint max = Math.Min(this.GetMultiplicity(s), other.GetMultiplicity(s));
+            //    for (uint i = 0; i < max; i++)
+            //    {
+            //        newMultiSet.Add(s);
+            //    }
+            //}
 
             return newMultiSet;
         }
@@ -75,15 +75,15 @@ namespace Lab4
         {
             MultiSet newMultiSet = new MultiSet();
 
-            HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
-            foreach (string s in hashSet)
-            {
-                uint max = Math.Max(this.GetMultiplicity(s) - other.GetMultiplicity(s), 0);
-                for (uint i = 0; i < max; i++)
-                {
-                    newMultiSet.Add(s);
-                }
-            }
+            //HashSet<string> hashSet = new HashSet<string>(this.ToList().Concat(other.ToList()).ToList());
+            //foreach (string s in hashSet)
+            //{
+            //    uint max = Math.Max(this.GetMultiplicity(s) - other.GetMultiplicity(s), 0);
+            //    for (uint i = 0; i < max; i++)
+            //    {
+            //        newMultiSet.Add(s);
+            //    }
+            //}
 
             return newMultiSet;
         }
@@ -144,9 +144,9 @@ namespace Lab4
         public List<MultiSet> FindPowerSet()
         {
             List<MultiSet> powerSet = new List<MultiSet>();
-            HashSet<string> remainElements = new HashSet<string>(this.ToList());
-            this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
-            powerSet.Sort(this.compare);
+            //HashSet<string> remainElements = new HashSet<string>(this.ToList());
+            //this.findPowerSetRecursive(powerSet, new MultiSet(), remainElements.ToList());
+            //powerSet.Sort(this.compare);
             return powerSet;
         }
 
@@ -155,14 +155,14 @@ namespace Lab4
             HashSet<string> hashSet = new HashSet<string>(this.ToList());
 
             bool bIsSubset = true;
-            foreach (string s in hashSet)
-            {
-                if (other.GetMultiplicity(s) < this.GetMultiplicity(s))
-                {
-                    bIsSubset = false;
-                    break;
-                }
-            }
+            //foreach (string s in hashSet)
+            //{
+            //    if (other.GetMultiplicity(s) < this.GetMultiplicity(s))
+            //    {
+            //        bIsSubset = false;
+            //        break;
+            //    }
+            //}
 
             return bIsSubset;
         }
@@ -172,14 +172,14 @@ namespace Lab4
             HashSet<string> hashSet = new HashSet<string>(this.ToList());
 
             bool bIsSuperSet = true;
-            foreach (string s in hashSet)
-            {
-                if (other.GetMultiplicity(s) > this.GetMultiplicity(s))
-                {
-                    bIsSuperSet = false;
-                    break;
-                }
-            }
+            //foreach (string s in hashSet)
+            //{
+            //    if (other.GetMultiplicity(s) > this.GetMultiplicity(s))
+            //    {
+            //        bIsSuperSet = false;
+            //        break;
+            //    }
+            //}
 
             return bIsSuperSet;
         }
