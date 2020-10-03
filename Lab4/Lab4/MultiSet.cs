@@ -169,7 +169,7 @@ namespace Lab4
 
         public bool IsSupersetOf(MultiSet other)
         {
-            HashSet<string> hashSet = new HashSet<string>(this.ToList());
+            HashSet<string> hashSet = new HashSet<string>(other.ToList());
 
             bool bIsSuperSet = true;
             foreach (string s in hashSet)
