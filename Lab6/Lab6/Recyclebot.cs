@@ -36,14 +36,14 @@ namespace Lab6
             foreach (Item item in this.NonRecycleItems)
             {
 
-                bool bool1 = (item.Volume != 10.0 || item.Volume != 11.0 || item.Volume != 15.0);
-                bool bool2 = (item.IsToxicWaste);
-                bool bool3 = (item.Type == EType.Furniture || item.Type == EType.Electronics);
+                bool bBool1 = (item.Volume != 10.0 || item.Volume != 11.0 || item.Volume != 15.0);
+                bool bBool2 = (item.IsToxicWaste);
+                bool bBool3 = (item.Type == EType.Furniture || item.Type == EType.Electronics);
 
-                if (!bool1 && bool2 && !bool3)
+                if (!bBool1 && bBool2 && !bBool3)
                 {
                 }
-                else if (bool1 && bool2 && !bool3)
+                else if (bBool1 && bBool2 && !bBool3)
                 {
                 }
                 else
