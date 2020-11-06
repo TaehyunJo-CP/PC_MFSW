@@ -45,7 +45,7 @@ namespace Lab7
 
             foreach (Frame frame1 in frames)
             {
-                foreach(Frame frame2 in frames2)
+                foreach (Frame frame2 in frames2)
                 {
                     if (frame1.ID == frame2.ID && frame1.Name == frame2.Name && frame1.Features == frame2.Features)
                     {
