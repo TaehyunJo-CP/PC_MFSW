@@ -23,7 +23,7 @@ namespace Lab7
             return filteredFrames;
         }
 
-        internal static List<Frame> FilterOutFrames(List<Frame> frames, EFeatureFlags features)
+        public static List<Frame> FilterOutFrames(List<Frame> frames, EFeatureFlags features)
         {
             List<Frame> filteredFrames = new List<Frame>();
 
@@ -39,7 +39,7 @@ namespace Lab7
             return filteredFrames;
         }
 
-        internal static List<Frame> Intersect(List<Frame> frames, List<Frame> frames2)
+        public static List<Frame> Intersect(List<Frame> frames, List<Frame> frames2)
         {
             List<Frame> intersectFrame = new List<Frame>();
 
@@ -57,7 +57,7 @@ namespace Lab7
             return intersectFrame;
         }
 
-        internal static List<int> GetSortKeys(List<Frame> frames, List<EFeatureFlags> features)
+        public static List<int> GetSortKeys(List<Frame> frames, List<EFeatureFlags> features)
         {
             List<int> sortKeys = new List<int>();
             for (int i = 0; i < frames.Count; i++)

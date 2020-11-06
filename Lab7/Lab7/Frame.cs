@@ -27,12 +27,12 @@ namespace Lab7
             this.Features = this.Features ^ features;
         }
 
-        internal void TurnOffFeatures(EFeatureFlags features)
+        public void TurnOffFeatures(EFeatureFlags features)
         {
             this.Features = this.Features & ~features;
         }
 
-        internal void TurnOnFeatures(EFeatureFlags features)
+        public void TurnOnFeatures(EFeatureFlags features)
         {
             this.Features = this.Features | features;
         }
