@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Assignment3
+﻿namespace Assignment3
 {
-    class INoise
+    public interface INoise
     {
+        int GetNext(int level);
     }
 }
