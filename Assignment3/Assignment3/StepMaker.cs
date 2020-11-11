@@ -12,7 +12,7 @@ namespace Assignment3
             List<int> result = new List<int>();
 
             List<int> recursiveResult;
-            for (int i = 0; i < steps.Length; i++)
+            for (int i = 0; i < steps.Length - 1; i++)
             {
                 int pre = steps[i];
                 int post = steps[i + 1];

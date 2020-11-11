@@ -66,6 +66,17 @@ namespace Assignment3
             //for (int i = 0; i < temp.Count; i++)
             //{
             //    Debug.Assert(temp[i] == newSteps[i]);
+
+
+            temp = new List<int> { 1, 9};
+            temp1 = new int[] { 1, 9};
+            newSteps = StepMaker.MakeSteps(temp1, new ZeroNoise());
+            Debug.Assert(temp.Count == newSteps.Count);
+            for (int i = 0; i < temp.Count; i++)
+            {
+                Debug.Assert(temp[i] == newSteps[i]);
+            }
+
             Console.WriteLine("dONE");
             }
 
