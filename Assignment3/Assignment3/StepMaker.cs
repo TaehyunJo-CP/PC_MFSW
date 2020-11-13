@@ -12,32 +12,23 @@ namespace Assignment3
             List<int> result = new List<int>();
 
             List<int> recursiveResult;
+
+            int lastEle = steps[^1];
+
             for (int i = 0; i < steps.Length - 1; i++)
             {
                 int pre = steps[i];
                 int post = steps[i + 1];
                 recursiveResult = makeStepsRecursive(pre, post, noise, 0);
 
-                if (i == 0)
+                for (int j = 0; j < recursiveResult.Count - 1; j++)
                 {
-                    for (int j = 0; j < recursiveResult.Count; j++)
-                    {
-                        result.Add(recursiveResult[j]);
-                    }
-                }
-                else
-                {
-                    for (int j = 1; j < recursiveResult.Count; j++)
-                    {
-                        result.Add(recursiveResult[j]);
-                    }
-
-                    if (i == steps.Length - 2)
-                    {
-                        break;
-                    }
+                    result.Add(recursiveResult[j]);
                 }
             }
+
+            result.Add(lastEle);
+
             return result;
         }
 
@@ -50,18 +41,23 @@ namespace Assignment3
             int absDiffTotal = Math.Abs(diffTotal);
 
             double diffUnit;
+
             if (absDiffTotal > 10)
             {
                 newSteps.Add(preStep);
+
                 diffUnit = (double)diffTotal / 5;
+
                 for (int i = 0; i < 4; i++)
                 {
                     int noiseValue = noise.GetNext(recursiveLevel);
                     double toAdded = (((double)(i + 1) * diffUnit) + (double)noiseValue);
                     newSteps.Add((int)(preStep + toAdded));
                 }
+
                 newSteps.Add(postStep);
 
+                int lastEle = newSteps[^1];
                 for (int i = 0; i < newSteps.Count - 1; i++)
                 {
                     int pre = newSteps[i];
@@ -69,21 +65,13 @@ namespace Assignment3
 
                     List<int> recursiveResult = makeStepsRecursive(pre, post, noise, recursiveLevel + 1);
 
-                    if (i == newSteps.Count - 2)
+                    for (int j = 0; j < recursiveResult.Count - 1; j++)
                     {
-                        for (int j = 0; j < recursiveResult.Count; j++)
-                        {
-                            result.Add(recursiveResult[j]);
-                        }
-                    }
-                    else
-                    {
-                        for (int j = 0; j < recursiveResult.Count - 1; j++)
-                        {
-                            result.Add(recursiveResult[j]);
-                        }
-                    }
+                        result.Add(recursiveResult[j]);
+                    }                    
                 }
+                result.Add(lastEle);
+
                 return result;
             }
             else
