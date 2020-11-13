@@ -16,7 +16,7 @@ namespace Assignment3
             {
                 int pre = steps[i];
                 int post = steps[i + 1];
-                recursiveResult = MakeStepsRecursive(pre, post, noise, 0);
+                recursiveResult = makeStepsRecursive(pre, post, noise, 0);
 
                 if (i == 0)
                 {
@@ -41,7 +41,7 @@ namespace Assignment3
             return result;
         }
 
-        private static List<int> MakeStepsRecursive(int preStep, int postStep, INoise noise, int recursiveLevel)
+        private static List<int> makeStepsRecursive(int preStep, int postStep, INoise noise, int recursiveLevel)
         {
             List<int> newSteps = new List<int>();
             List<int> result = new List<int>();
@@ -67,7 +67,7 @@ namespace Assignment3
                     int pre = newSteps[i];
                     int post = newSteps[i + 1];
 
-                    List<int> recursiveResult = MakeStepsRecursive(pre, post, noise, recursiveLevel + 1);
+                    List<int> recursiveResult = makeStepsRecursive(pre, post, noise, recursiveLevel + 1);
 
                     if (i == newSteps.Count - 2)
                     {
