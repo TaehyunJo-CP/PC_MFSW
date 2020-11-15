@@ -47,12 +47,14 @@ namespace Assignment3
                 newSteps.Add(preStep);
 
                 diffUnit = (double)diffTotal / 5;
-
+                
                 for (int i = 0; i < 4; i++)
                 {
                     int noiseValue = noise.GetNext(recursiveLevel);
-                    double toAdded = (((double)(i + 1) * diffUnit) + (double)noiseValue);
-                    newSteps.Add((int)(preStep + toAdded));
+
+                    double addedStep = (double)preStep + (double)(postStep - preStep) * ((double)(i + 1) / 5);
+                    //double toAdded = (((double)(i + 1) * diffUnit) + (double)noiseValue);
+                    newSteps.Add((int)addedStep + noiseValue);
                 }
 
                 newSteps.Add(postStep);
