@@ -7,6 +7,10 @@ namespace Assignment4
     {
         public static double[] GetGaussianFilter1D(double sigma)
         {
+            if (sigma > 0.25 & sigma <= 0.5)
+            {
+                sigma = 0.5;
+            }
             int arrayLength = (int)(sigma * 6);
             if (arrayLength % 2 == 0)
             {
@@ -60,6 +64,10 @@ namespace Assignment4
 
         public static double[,] GetGaussianFilter2D(double sigma)
         {
+            if (sigma > 0.25 & sigma <= 0.5)
+            {
+                sigma = 0.5;
+            }
             int arrayLength = (int)(sigma * 6);
             if (arrayLength % 2 == 0)
             {
@@ -114,7 +122,7 @@ namespace Assignment4
             {
                 for (int j = 0; j < height; j++)
                 {
-                    Color newColor = Color.FromArgb((int)filteredReds[i, j], (int)filteredGreens[i, j], (int)filteredBlues[i, j]);
+                    Color newColor = Color.FromArgb((byte)filteredReds[i, j], (byte)filteredGreens[i, j], (byte)filteredBlues[i, j]);
                     result.SetPixel(i, j, newColor);
                 }
             }

@@ -162,6 +162,8 @@ namespace Assignment4
                 assertBitmapEqual(expected, newImage, 1);
             }
             #endregion
+
+            Console.WriteLine("Done");
         }
 
         private static void assertBitmapEqual(Bitmap expected, Bitmap actual, int epsilon)
