@@ -94,9 +94,9 @@ namespace Assignment4
             byte[,] greens = new byte[width, height];
             byte[,] blues = new byte[width, height]; 
 
-            for (int i = 0; i < width; i++)
+            for (int i = 0; i < width; i++) // x
             {
-                for (int j = 0; j < height; j++)
+                for (int j = 0; j < height; j++) // y
                 {
                     reds[i, j] = bitmap.GetPixel(i, j).R;
                     greens[i, j] = bitmap.GetPixel(i, j).G;
@@ -124,11 +124,11 @@ namespace Assignment4
 
         public static byte[,] Convolve2D(byte[,] signal, double[,] filter)
         {
-            int signalXLength = signal.GetLength(1);
-            int signalYLength = signal.GetLength(0);
+            int signalXLength = signal.GetLength(0);
+            int signalYLength = signal.GetLength(1);
 
-            int filterXLength = filter.GetLength(1);
-            int filterYLength = filter.GetLength(0);
+            int filterXLength = filter.GetLength(0);
+            int filterYLength = filter.GetLength(1);
 
             byte[,] result = new byte[signalXLength, signalYLength];
 
