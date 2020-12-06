@@ -90,23 +90,23 @@ namespace Assignment4
             int width = bitmap.Width;
             int height = bitmap.Height;
 
-            double[,] reds = new double[width, height];
-            double[,] greens = new double[width, height];
-            double[,] blues = new double[width, height]; 
+            byte[,] reds = new byte[width, height];
+            byte[,] greens = new byte[width, height];
+            byte[,] blues = new byte[width, height]; 
 
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    reds[i, j] = (double)bitmap.GetPixel(i, j).R;
-                    greens[i, j] = (double)bitmap.GetPixel(i, j).G;
-                    blues[i, j] = (double)bitmap.GetPixel(i, j).B;
+                    reds[i, j] = bitmap.GetPixel(i, j).R;
+                    greens[i, j] = bitmap.GetPixel(i, j).G;
+                    blues[i, j] = bitmap.GetPixel(i, j).B;
                 }
             }
 
-            double[,] filteredReds = SignalProcessor.Convolve2D(reds, filter);
-            double[,] filteredGreens = SignalProcessor.Convolve2D(greens, filter);
-            double[,] filteredBlues = SignalProcessor.Convolve2D(blues, filter);
+            byte[,] filteredReds = SignalProcessor.Convolve2D(reds, filter);
+            byte[,] filteredGreens = SignalProcessor.Convolve2D(greens, filter);
+            byte[,] filteredBlues = SignalProcessor.Convolve2D(blues, filter);
 
             Bitmap result = new Bitmap(width, height);
 
@@ -114,7 +114,7 @@ namespace Assignment4
             {
                 for (int j = 0; j < height; j++)
                 {
-                    Color newColor = Color.FromArgb((byte)filteredReds[i, j], (byte)filteredGreens[i, j], (byte)filteredBlues[i, j]);
+                    Color newColor = Color.FromArgb(filteredReds[i, j], filteredGreens[i, j], filteredBlues[i, j]);
                     result.SetPixel(i, j, newColor);
                 }
             }
@@ -122,7 +122,7 @@ namespace Assignment4
             return result;
         }
 
-        public static double[,] Convolve2D(double[,] signal, double[,] filter)
+        public static byte[,] Convolve2D(byte[,] signal, double[,] filter)
         {
             int signalXLength = signal.GetLength(1);
             int signalYLength = signal.GetLength(0);
@@ -130,8 +130,7 @@ namespace Assignment4
             int filterXLength = filter.GetLength(1);
             int filterYLength = filter.GetLength(0);
 
-            double[,] result = new double[signalXLength, signalYLength];
-
+            byte[,] result = new byte[signalXLength, signalYLength];
 
             for (int y = 0; y < signalYLength; y++)
             {
@@ -165,14 +164,16 @@ namespace Assignment4
 
                     if (filteredValue > 255)
                     {
-                        filteredValue = 255;
+                        result[y, x] = (byte)255;
                     }
                     else if (filteredValue < 0)
                     {
-                        filteredValue = 0;
+                        result[y, x] = (byte)0;
                     }
-
-                    result[y, x] = filteredValue;
+                    else
+                    {
+                        result[y, x] = (byte)filteredValue;
+                    }
                 }
             }
             return result;
