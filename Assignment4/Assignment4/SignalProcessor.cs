@@ -155,7 +155,8 @@ namespace Assignment4
                             }
                             else
                             {
-                                filteredValue += signal[j, i] * filter[filterXLength - 1 - filterX, filterYLength - 1 - filterY];
+                                filteredValue += signal[i, j] * filter[filterYLength - 1 - filterY, filterXLength - 1 - filterX];
+                                //filteredValue += signal[i, j] * filter[filterX, filterY];
                             }
                             filterY++;
                         }
@@ -164,15 +165,15 @@ namespace Assignment4
 
                     if (filteredValue > 255)
                     {
-                        result[y, x] = (byte)255;
+                        result[x, y] = (byte)255;
                     }
                     else if (filteredValue < 0)
                     {
-                        result[y, x] = (byte)0;
+                        result[x, y] = (byte)0;
                     }
                     else
                     {
-                        result[y, x] = (byte)filteredValue;
+                        result[x, y] = (byte)filteredValue;
                     }
                 }
             }

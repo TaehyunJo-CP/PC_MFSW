@@ -163,6 +163,30 @@ namespace Assignment4
             }
             #endregion
 
+            #region mytest
+
+            byte[,] t = new byte[3, 7]
+            {
+                {1, 2, 3, 4, 5, 6, 7 },
+                {1, 2, 3, 4, 5, 6, 7 },
+                {1, 2, 3, 4, 5, 6, 7 },
+            };
+
+            double[,] f = new double[3, 3]
+            {
+                { 0, 0, 0},
+                { 1, 0, 0},
+                { 0, 0, 0},
+            };
+
+            byte[,] r = SignalProcessor.Convolve2D(t, f);
+            printMatrix(r);
+
+            #endregion
+
+
+
+
             Console.WriteLine("Done");
         }
 
@@ -230,6 +254,23 @@ namespace Assignment4
         }
 
         private static void printMatrix(double[,] matrix)
+        {
+            Console.WriteLine("---------------------------------");
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write("{0, -6}, ", matrix[i, j]);
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("---------------------------------");
+        }
+
+        private static void printMatrix(byte[,] matrix)
         {
             Console.WriteLine("---------------------------------");
 
